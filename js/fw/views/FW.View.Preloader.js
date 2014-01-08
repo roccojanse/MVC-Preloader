@@ -14,6 +14,16 @@
 
         // default vars
         this._$container = elements.container;
+        this._$indicator = elements.indicator || null;
+        this._$progressbar = elements.progressbar || null;
+
+        // events
+        this.onReady = new FW.ObservableEvent(this);
+
+        var _this = this;
+
+        // model listeners
+        
 
         this.init();
 

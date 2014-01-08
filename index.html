@@ -31,21 +31,22 @@
         $(document).ready(function($) {
 
             var model = new FW.Model.Preloader([{
-                'id': 'image-01',
-                'path': 'assets/img/image01.png',
+                'id': 'bigBugBunny',
+                'path': 'assets/img/big_big_buck_bunny.jpg',
                 'type': 'image'
             },{
-                'id': 'image-02',
-                'path': 'assets/img/image02.png',
+                'id': 'leopard',
+                'path': 'assets/img/Leopard_big_cats.jpg',
                 'type': 'image'
             },{
-                'id': 'image-03',
-                'path': 'assets/img/image03.png',
+                'id': 'bigdata',
+                'path': 'assets/img/Big-Data.jpg',
                 'type': 'image'
             }]);
             
             var view = new FW.View.Preloader(model, {
                 'container': $('#preloader-container'),
+                'indicator': $('#preloader-indicator-container'),
                 'progressbar': $('#preloader-progressbar')
             });
             var secondView = new FW.View.Preloader(model, {
@@ -54,15 +55,18 @@
             });
             var thirdView = new FW.View.Preloader(model, {
                 'container': $('#preloader-third-container'),
-                'progressbar': $('#preloader-second-progressbar')
+                'progressbar': $('#preloader-third-progressbar')
             });
-            
 
             var preloader = new FW.Controller.Preloader(model, view);
             var preloaderSecond = new FW.Controller.Preloader(model, secondView);
+            preloaderSecond.setDirection('height');
             var preloaderThird = new FW.Controller.Preloader(model, thirdView);
+            preloaderThird.setDirection('height');
 
-
+            preloader.startLoading();
+            preloaderSecond.startLoading();
+            preloaderThird.startLoading();
             console.log(preloader);
 
 
@@ -74,13 +78,20 @@
 <body>
 
     <div id="preloader-container">
-        <div id="preloader-progressbar"></div>
+        <div id="preloader-indicator-container">100%</div>
+        <div id="preloader-progressbar-container">
+            <div id="preloader-progressbar"></div>
+        </div>
     </div>
     <div id="preloader-second-container">
-        <div id="preloader-second-progressbar"></div>
+        <div id="preloader-second-progressbar-container">
+            <div id="preloader-second-progressbar"></div>
+        </div>
     </div>
     <div id="preloader-third-container">
-        <div id="preloader-third-progressbar"></div>
+        <div id="preloader-third-progressbar-container">
+            <div id="preloader-third-progressbar"></div>
+        </div>
     </div>
 
 </body>

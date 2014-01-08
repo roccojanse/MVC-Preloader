@@ -50,6 +50,10 @@
             } else {
                 return;
             }
+        },
+
+        getTotal: function() {
+            return this._length;
         }
 
     });

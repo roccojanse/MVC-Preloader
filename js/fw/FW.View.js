@@ -12,6 +12,10 @@
         this._model = model;
         this._$container = null;
 
+        // events
+        this.onShow = new FW.ObservableEvent(this);
+        this.onHide = new FW.ObservableEvent(this);
+
     };
 
     $.extend(FW.View.prototype, {
@@ -22,7 +26,10 @@
          * @return void
          */
         show: function() {
-            this._$container.fadeIn();
+            var _this = this;
+            this._$container.fadeIn(400, function() {
+                _this.onShow.notify();
+            });
         },
 
         /**
@@ -30,7 +37,10 @@
          * @return void
          */
         hide: function() {
-            this._$container.hide();
+            var _this = this;
+            this._$container.fadeOut(100, function() {
+                _this.onHide.notify();                
+            });
         }
 
     });
