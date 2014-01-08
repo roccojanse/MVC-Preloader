@@ -10,6 +10,8 @@
     <meta name="apple-touch-fullscreen" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black" />
 
+    <link rel="stylesheet" href="css/common.css">
+
     <script type="text/javascript" src="js/jquery/jquery-2.0.3.min.js"></script>
 
     <script type="text/javascript" src="js/fw/FW.Namespace.js"></script>
@@ -17,23 +19,48 @@
     <script type="text/javascript" src="js/fw/FW.ObservableEvent.js"></script>
     <script type="text/javascript" src="js/fw/FW.Model.js"></script>
     <script type="text/javascript" src="js/fw/FW.View.js"></script>
+    <script type="text/javascript" src="js/fw/FW.Model.js"></script>
     <script type="text/javascript" src="js/fw/FW.Controller.js"></script>
 
+    <script type="text/javascript" src="js/fw/models/FW.Model.Preloader.js"></script>
+    <script type="text/javascript" src="js/fw/views/FW.View.Preloader.js"></script>
     <script type="text/javascript" src="js/fw/controllers/FW.Controller.Preloader.js"></script>
 
     <script>
 
         $(document).ready(function($) {
 
-            var model = new FW.Model();
-            model.add([
-                'assets/img/test01.png',
-                'assets/img/test02.png',
-                'assets/img/test03.png'
-            ]);
+            var model = new FW.Model.Preloader([{
+                'id': 'image-01',
+                'path': 'assets/img/image01.png',
+                'type': 'image'
+            },{
+                'id': 'image-02',
+                'path': 'assets/img/image02.png',
+                'type': 'image'
+            },{
+                'id': 'image-03',
+                'path': 'assets/img/image03.png',
+                'type': 'image'
+            }]);
+            
+            var view = new FW.View.Preloader(model, {
+                'container': $('#preloader-container'),
+                'progressbar': $('#preloader-progressbar')
+            });
+            var secondView = new FW.View.Preloader(model, {
+                'container': $('#preloader-second-container'),
+                'progressbar': $('#preloader-second-progressbar')
+            });
+            var thirdView = new FW.View.Preloader(model, {
+                'container': $('#preloader-third-container'),
+                'progressbar': $('#preloader-second-progressbar')
+            });
+            
 
-            var preloader = new FW.Controller.Preloader('model', 'view');
-
+            var preloader = new FW.Controller.Preloader(model, view);
+            var preloaderSecond = new FW.Controller.Preloader(model, secondView);
+            var preloaderThird = new FW.Controller.Preloader(model, thirdView);
 
 
             console.log(preloader);
@@ -42,11 +69,19 @@
         });
 
     </script>
+
 </head>
 <body>
 
-
-
+    <div id="preloader-container">
+        <div id="preloader-progressbar"></div>
+    </div>
+    <div id="preloader-second-container">
+        <div id="preloader-second-progressbar"></div>
+    </div>
+    <div id="preloader-third-container">
+        <div id="preloader-third-progressbar"></div>
+    </div>
 
 </body>
 </html>

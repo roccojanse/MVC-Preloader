@@ -25,13 +25,16 @@
          * @returns void
          */
         add: function(data) {
-
-            console.log(data, FW.Utils.typeOf(data));
-
-            if (FW.Utils.typeOf(data) === 'array') {
-                for (var i = 0; i < data.length; i++) {
-                    this.addData(data[i]);
-                }
+            if (data) {
+                if (FW.Utils.typeOf(data) === 'array') {
+                    for (var i = 0; i < data.length; i++) {
+                        this.addData(data[i]);
+                    }
+                } else {
+                    this.addData(data);
+                }               
+            } else {
+                return;
             }
         },
 

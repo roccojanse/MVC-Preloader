@@ -1,17 +1,16 @@
     /**
      * Base framework View class. Namespace.
-     * @class Creates base view objects
+     * @class Creates base view objects. Should be extended.
      * @author Rocco Janse, roccojanse@msn.com
      * @param {object} model Model data object
-     * @param {object} elements Elements object containing HTMLDomElements for this view, like container, viewport etc.
      * @constructor
      */
-    FW.View = function(model, elements) {
+    FW.View = function(model) {
         /** @lends FW.View */
 
         // default vars
         this._model = model;
-        this._$container = elements.container;
+        this._$container = null;
 
     };
 
