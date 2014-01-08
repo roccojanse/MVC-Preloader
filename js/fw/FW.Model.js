@@ -25,11 +25,14 @@
          * @returns void
          */
         add: function(data) {
-            //if (typeof data === 'array') {
+
+            console.log(data, FW.Utils.typeOf(data));
+
+            if (FW.Utils.typeOf(data) === 'array') {
                 for (var i = 0; i < data.length; i++) {
                     this.addData(data[i]);
                 }
-            //}
+            }
         },
 
         /**
