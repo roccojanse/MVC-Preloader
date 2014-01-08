@@ -61,6 +61,7 @@
             var preloader = new FW.Controller.Preloader(model, view);
             preloader.onComplete = function() {
                 preloader.hide();
+                $('#img').attr('src', preloader.get('bigBugBunny').path);
             }
 
             var preloaderSecond = new FW.Controller.Preloader(model, secondView);
@@ -99,6 +100,6 @@
             <div id="preloader-third-progressbar"></div>
         </div>
     </div>
-
+    <img id="img" />
 </body>
 </html>

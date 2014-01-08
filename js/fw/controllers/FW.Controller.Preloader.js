@@ -123,6 +123,10 @@
             }
         },
 
+        get: function(id) {
+            return this._model.getData()[id];
+        },
+
         onComplete: function() {
             this._view.hide();
         },
