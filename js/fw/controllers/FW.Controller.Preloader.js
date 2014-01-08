@@ -87,6 +87,17 @@
 
         },
 
+        show: function() {
+
+            this._view.show();
+            
+        },
+
+        hide: function() {
+            
+            this._view.hide();
+        },
+
         update: function() {
 
             this._progress = (this._loaded / this._total)*100;
